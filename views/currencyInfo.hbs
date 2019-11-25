@@ -1,0 +1,64 @@
+{{> header}}
+<br/>
+
+
+<div class="col-md-12 ">
+    <h2><b>Currency Information</b></h2>
+    <form action="currencySearch" method="post">
+        <div class="input-group col-md-6">
+            <input class="form-control" type="text" id="place" name="query" placeholder="Enter the Currency code that you want to search. Eg: MYR" required>
+            <span class="input-group-btn">
+                <button class="btn btn-primary">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
+                <br/>
+             </span>
+        </div>
+    </form>
+    <br/>
+</div>
+
+<div class="col-md-12">
+    <h3>Currency Code: </h3>
+</div>
+<div class="col-md-12">
+    <input class="form-control" type="text" id="userInput" onkeyup="myFunction()" placeholder="Search for Currency Codes.." title="search currency code">
+</div>
+<div class="col-md-12" >
+    <table class="table table-hover" id="currencyTable">
+        <thead>
+        <tr>
+            <th>Currency Code</th>
+            <th>Currency Rate</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div style="margin-bottom: 30%;">
+</div>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("userInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("currencyTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+{{> footer}}

@@ -1,0 +1,67 @@
+{{> header}}
+<br/>
+<div class="col-md-12">
+    <h2><b>Search History</b></h2>
+    <script>
+		function printDiv(divName){
+			var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML =     "<h3><b>Country- Search History</b></h3>"+printContents;
+			window.print();
+			document.body.innerHTML = originalContents;
+		}
+	</script>
+    <button class="btn btn-success" onclick="printDiv('print')">
+        <span class="glyphicon glyphicon-print">&NonBreakingSpace;</span>Print All Records
+    </button>
+    <form action="del" method="post" class="col-md-2" id="delForm">
+        <button class="btn btn-primary" onclick="alertfunction()" >
+            <span class="glyphicon glyphicon-trash"></span>&NonBreakingSpace;</span>Delete All Records
+        </button>
+    </form>
+    <script>
+        function alertfunction() {
+            alert("Records Deleted!");
+            document.getElementById("delForm").submit();
+        }
+    </script>
+</div>
+
+<div class="col-md-12" id="print">
+        <br/>
+    <table class="table table-list-search" width="100%">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Capital</th>
+            <th>Region</th>
+            <th>Population</th>
+            <th>TimeZones</th>
+            <th>Currency Name</th>
+            <th>Currency Code</th>
+            <th>Currency Symbol</th>
+            <th>Country Flag</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#list items}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{capital}}</td>
+                <td>{{region}}</td>
+                <td>{{population}}</td>
+                <td>{{timezones}}</td>
+                <td>{{currency_name}}</td>
+                <td>{{currency_code}}</td>
+                <td>{{currency_symbol}}</td>
+                <td><img src="https://www.countryflags.io/{{country_flag}}/flat/64.png"/></td>
+
+            </tr>
+        {{/list}}
+        </tbody>
+    </table>
+</div>
+<div style="margin-bottom: 30%;">
+
+</div>
+{{> footer}}
