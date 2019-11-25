@@ -9,10 +9,10 @@ const axios = require('axios');
 
 //DB CONNECTION
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "countryncurrency"
+    host: "q57yawiwmnaw13d2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "raxvni11r26ehoy9",
+    password: "po3nhu0acqpycwiq",
+    database: "teha3le6vwyo1uu0"
 });
 
 //DECLARATION
