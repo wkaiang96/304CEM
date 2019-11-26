@@ -32,10 +32,10 @@ server.get('/', (req, res) => {
     res.render('index.hbs');
 });
 
-//About Us section
-server.get('/aboutus', (req, res) => {
-    res.render('index.hbs#about');
-});
+// //About Us section
+// server.get('#aboutus', (req, res) => {
+//     res.render('index.hbs');
+// });
 
 //Country Info PAGE
  server.get('/countryInfo', (req, res) => {
