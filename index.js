@@ -32,6 +32,11 @@ server.get('/', (req, res) => {
     res.render('index.hbs');
 });
 
+//About Us section
+server.get('/aboutus', (req, res) => {
+    res.render('index.hbs#about');
+});
+
 //Country Info PAGE
  server.get('/countryInfo', (req, res) => {
      res.render('countryInfo.hbs');
