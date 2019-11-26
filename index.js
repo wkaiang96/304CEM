@@ -33,8 +33,8 @@ server.get('/', (req, res) => {
 });
 
 // //About Us section
-// server.get('#aboutus', (req, res) => {
-//     res.render('index.hbs');
+// server.get('/aboutus', (req, res) => {
+//     res.render('');
 // });
 
 //Country Info PAGE
