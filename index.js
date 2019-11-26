@@ -50,7 +50,7 @@ server.get('/currencyInfo', (req, res) => {
 });
 
 //Records page (History)
-server.get('/recordHistory', (req, res) => {
+server.get('/records', (req, res) => {
     displayData = [];
     con.query("SELECT * FROM country_info", function (err, result, fields) {
         if (err) throw err;
