@@ -50,6 +50,13 @@ server.get('/currencyInfo', (req, res) => {
    //Currency Exchange API LINK// https://api.exchangerate-api.com/v4/latest/{}
 });
 
+//Error PAGE
+server.get('/error', (req, res) => {
+    res.render('error.hbs');
+
+   //If not found then error page
+});
+
 //Records page (History)
 server.get('/records', (req, res) => {
     displayData = [];
@@ -95,18 +102,25 @@ server.post('/currencySearch', (req, res) => {
     // conversionName = [];
     displayData = [];
     const querystr1 = `https://api.exchangerate-api.com/v4/latest/${currency_code}`;
-    axios.get(querystr1).then((response) => {
-        for (var key in response.data.rates){
-            const name = key;
-            const rate = response.data.rates[key];
+    
+    axios.get(querystr1)
+        .then((response) => {
+            for (var key in response.data.rates){
+                const name = key;
+                const rate = response.data.rates[key];
+                //PUSH TO ARRAY
+                displayData.push({'name': name, 'rate': rate});
+            }
+            setTimeout(function(){
+                res.render('currencySearch.hbs', { mainItem: currency_code });
+            }, 200)
+        })
+        .catch(function(error){
+            setTimeout(function(){
+                res.render('error.hbs');
+            }, 200)
+        })
 
-            //PUSH TO ARRAY
-            displayData.push({'name': name, 'rate': rate});
-        }
-        setTimeout(function(){
-            res.render('currencySearch.hbs', { mainItem: currency_code });
-        }, 200)
-    })
 });
 
 //Country Information Search Function
@@ -134,6 +148,11 @@ server.post('/search', (req, res) => {
         setTimeout(function(){
             addToDB(countryData);
             res.render('search.hbs');
+        }, 200)
+    })
+    .catch(function(error){
+        setTimeout(function(){
+            res.render('error.hbs');
         }, 200)
     })
 });
